@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wan Sofiyah — AI Engineer & Geospatial Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F5F0;
+    --bg2: #EEEAE2;
+    --ink: #1A1917;
+    --ink2: #5C5850;
+    --ink3: #9B9589;
+    --accent: #2A5F4F;
+    --accent2: #4A8C78;
+    --accent-light: #E0EDE9;
+    --warm: #C4703A;
+    --line: #D8D3C8;
+    --white: #FFFFFF;
+    --card: #FFFFFF;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Outfit', sans-serif;
+    --radius: 4px;
+    --radius-lg: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247, 245, 240, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 400; color: var(--ink2);
+    text-decoration: none; letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 2rem 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(42px, 5vw, 64px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 16px; color: var(--ink2);
+    line-height: 1.75; margin-bottom: 2rem;
+    max-width: 480px;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: var(--radius);
+    font-size: 13px; font-weight: 500; font-family: var(--sans);
+    text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--accent); color: var(--white);
+  }
+  .btn-primary:hover { background: #1f4a3c; }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Hero right — visual */
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 32px; color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px; color: var(--ink3); font-weight: 400;
+  }
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    background: var(--accent-light);
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(42,95,79,0.15);
+  }
+  .tag.warm { background: #F5E8DF; color: var(--warm); border-color: rgba(196,112,58,0.15); }
+  .tag.gray { background: var(--bg2); color: var(--ink2); border-color: var(--line); }
+
+  /* ─── SECTION ─── */
+  section { padding: 100px 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1rem;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px; color: var(--ink3);
+    letter-spacing: 0.08em;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 38px);
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start;
+  }
+  .about-text p {
+    font-size: 16px; color: var(--ink2); line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .about-text p strong { color: var(--ink); font-weight: 500; }
+  .about-contact { display: flex; flex-direction: column; gap: 12px; margin-top: 1.5rem; }
+  .contact-row {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; color: var(--ink2);
+  }
+  .contact-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--accent-light); display: flex;
+    align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { width: 15px; height: 15px; stroke: var(--accent); fill: none; stroke-width: 1.75; }
+  .skills-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+  .skill-group-title {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink3); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .skill-pill-group { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* ─── PROJECTS ─── */
+  #projects { background: var(--bg); }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    background: var(--accent); color: var(--white);
+  }
+  .project-chip {
+    font-family: var(--mono); font-size: 11px;
+    padding: 4px 10px; border-radius: 100px;
+    background: var(--accent-light); color: var(--accent);
+    letter-spacing: 0.04em; display: inline-block;
+    margin-bottom: 1rem;
+  }
+  .project-card.featured .project-chip {
+    background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);
+  }
+  .project-card h3 {
+    font-family: var(--serif); font-size: 22px;
+    font-weight: 400; line-height: 1.25;
+    margin-bottom: 0.75rem; color: var(--ink);
+  }
+  .project-card.featured h3 { color: var(--white); }
+  .project-card p { font-size: 14px; color: var(--ink2); line-height: 1.7; }
+  .project-card.featured p { color: rgba(255,255,255,0.8); }
+  .project-period {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink3); margin-top: 1.25rem;
+  }
+  .project-card.featured .project-period { color: rgba(255,255,255,0.6); }
+  .feature-list { list-style: none; margin-top: 1rem; }
+  .feature-list li {
+    font-size: 13px; color: rgba(255,255,255,0.85);
+    padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .feature-list li::before {
+    content: '';
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(255,255,255,0.6); flex-shrink: 0;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.25rem; }
+  .project-tag {
+    font-family: var(--mono); font-size: 10px;
+    padding: 3px 8px; border-radius: 4px;
+    background: var(--bg2); color: var(--ink3);
+  }
+  .project-card.featured .project-tag {
+    background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7);
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { background: var(--white); }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 2rem; padding: 2.5rem 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-period {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink3); letter-spacing: 0.04em;
+    padding-top: 4px; line-height: 1.6;
+  }
+  .timeline-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); margin-top: 8px; margin-bottom: 4px;
+  }
+  .timeline-company {
+    font-size: 12px; color: var(--ink3); margin-top: 6px;
+    font-family: var(--mono);
+  }
+  .timeline-content h3 {
+    font-size: 18px; font-weight: 600; color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .timeline-org {
+    font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 1rem;
+  }
+  .timeline-content ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .timeline-content li {
+    font-size: 14px; color: var(--ink2); line-height: 1.65;
+    padding-left: 1.25rem; position: relative;
+  }
+  .timeline-content li::before {
+    content: '—'; position: absolute; left: 0;
+    color: var(--accent); font-size: 12px;
+  }
+
+  /* ─── EDUCATION & CERTS ─── */
+  #education { background: var(--bg); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .edu-card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius-lg); padding: 1.75rem;
+  }
+  .edu-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .edu-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+  .edu-card h3 { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .edu-card .edu-sub { font-size: 13px; color: var(--ink2); margin-bottom: 8px; }
+  .edu-card .edu-period { font-family: var(--mono); font-size: 11px; color: var(--ink3); }
+  .edu-badge {
+    display: inline-block; margin-top: 10px;
+    font-family: var(--mono); font-size: 11px;
+    padding: 3px 10px; border-radius: 100px;
+    background: var(--accent-light); color: var(--accent);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+  }
+  footer strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  footer a:hover { color: var(--white); }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 100px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 60px 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ws.portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section style="padding:0;">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Available for opportunities</div>
+      <h1>AI Engineer &<br><em>Geospatial</em><br>Developer</h1>
+      <p class="hero-desc">
+        Building intelligent systems at the intersection of machine learning, remote sensing, and spatial data — applied to real agricultural challenges.
+      </p>
+      <div class="hero-cta">
+        <a href="mailto:wansofiyah233@gmail.com" class="btn btn-primary">Get in touch</a>
+        <a href="#projects" class="btn btn-outline">View Projects</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">3.46</div>
+          <div class="stat-label">GPA — Informatics Engineering</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Production AI projects shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years hands-on experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">GCP</div>
+          <div class="stat-label">Google Cloud certified</div>
+        </div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">GeoPandas</span>
+        <span class="tag">GDAL</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">QGIS</span>
+        <span class="tag warm">CNN / Deep Learning</span>
+        <span class="tag warm">Remote Sensing</span>
+        <span class="tag gray">Kotlin</span>
+        <span class="tag gray">Android Dev</span>
+        <span class="tag gray">LabelMe</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>
+          I'm <strong>Wan Sofiyah</strong>, an Informatics Engineering graduate from Universitas Islam Negeri Sultan Syarif Kasim Riau, with a focus on <strong>AI/Machine Learning, geospatial data processing, and remote sensing analysis</strong>.
+        </p>
+        <p>
+          My work lives at the intersection of computer vision and spatial intelligence — building systems that help people understand and manage land at scale. At PT Digital Sawit Pro, I developed core AI modules for <strong>Sawit Vision</strong>, a drone-based plantation monitoring platform serving the palm oil industry.
+        </p>
+        <p>
+          I'm passionate about applying spatial technology to real-world agricultural and environmental problems — and equally comfortable writing Python geospatial pipelines, training deep learning models, and deploying them into production Android applications.
+        </p>
+        <div class="about-contact">
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            wansofiyah233@gmail.com
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.4 2 2 0 0 1 3.57 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+            </div>
+            +62 896 3950 0789
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            linkedin.com/in/wan-sofiyah
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-sidebar fade-up">
+        <div>
+          <div class="skill-group-title">Geospatial & Remote Sensing</div>
+          <div class="skill-pill-group">
+            <span class="tag">GeoPandas</span>
+            <span class="tag">GDAL</span>
+            <span class="tag">Rasterio</span>
+            <span class="tag">QGIS</span>
+            <span class="tag">OpenCV</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">AI / Machine Learning</div>
+          <div class="skill-pill-group">
+            <span class="tag warm">TensorFlow/Keras</span>
+            <span class="tag warm">CNN</span>
+            <span class="tag warm">Deep Learning</span>
+            <span class="tag warm">Grad-CAM / XAI</span>
+            <span class="tag warm">LabelMe</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Programming & Dev</div>
+          <div class="skill-pill-group">
+            <span class="tag gray">Python</span>
+            <span class="tag gray">NumPy / Pandas</span>
+            <span class="tag gray">Kotlin / XML</span>
+            <span class="tag gray">Android Dev</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Cloud & Tools</div>
+          <div class="skill-pill-group">
+            <span class="tag gray">Google Cloud (GCP)</span>
+            <span class="tag gray">Data & Analytics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Featured -->
+      <div class="project-card featured fade-up">
+        <div>
+          <span class="project-chip">Featured Project</span>
+          <h3>Sawit Vision: Drone-Based Plantation Analysis Platform</h3>
+          <p>An AI-powered geospatial platform for monitoring oil palm plantations using drone aerial imagery. Developed core analysis modules that enable agronomists to make data-driven decisions at scale.</p>
+          <div class="project-period">Dec 2025 — Present · PT Digital Sawit Pro</div>
+        </div>
+        <div>
+          <ul class="feature-list">
+            <li>Automated tree detection from drone imagery</li>
+            <li>Planting distance measurement & spatial spacing evaluation</li>
+            <li>Stand density analysis & gap-filling identification</li>
+            <li>Replanting candidate identification</li>
+            <li>Stand thinning analysis module</li>
+            <li>Tree height estimation (in progress)</li>
+          </ul>
+          <div class="project-tags" style="margin-top:1.25rem;">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">GeoPandas</span>
+            <span class="project-tag">GDAL</span>
+            <span class="project-tag">Computer Vision</span>
+            <span class="project-tag">Remote Sensing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- XAI Thesis -->
+      <div class="project-card fade-up">
+        <span class="project-chip">Final Thesis</span>
+        <h3>Lung Disease Detection with Explainable AI</h3>
+        <p>Developed and optimized a CNN model to detect and classify lung diseases from chest X-ray imagery. Applied Grad-CAM heatmap visualization to make model decisions interpretable and transparent for clinical use — highlighting the most diagnostically significant regions for each diagnosis.</p>
+        <div class="project-period">Jan 2025 — Jun 2025</div>
+        <div class="project-tags">
+          <span class="project-tag">TensorFlow/Keras</span>
+          <span class="project-tag">CNN</span>
+          <span class="project-tag">Grad-CAM</span>
+          <span class="project-tag">XAI</span>
+          <span class="project-tag">Medical Imaging</span>
+        </div>
+      </div>
+
+      <!-- Android FFB -->
+      <div class="project-card fade-up">
+        <span class="project-chip">Mobile App</span>
+        <h3>Hitung TBS — FFB Counting Android App</h3>
+        <p>Built an end-to-end Android application for Fresh Fruit Bunch (FFB) counting and ripeness detection, enabling field workers to perform real-time yield tallying directly from mobile devices. Handled full development from model training through to UI/UX implementation.</p>
+        <div class="project-period">Dec 2025 — Present · PT Digital Sawit Pro</div>
+        <div class="project-tags">
+          <span class="project-tag">Kotlin</span>
+          <span class="project-tag">XML</span>
+          <span class="project-tag">Android</span>
+          <span class="project-tag">Computer Vision</span>
+        </div>
+      </div>
+
+      <!-- Heavy Equipment -->
+      <div class="project-card fade-up">
+        <span class="project-chip">System</span>
+        <h3>Heavy Equipment Digital Monitoring System</h3>
+        <p>Designed and built a digital tracking system for heavy machinery across plantation and factory sites at PT Perkebunan Nusantara IV, replacing manual Excel-based records with a structured digital monitoring solution.</p>
+        <div class="project-period">Mar 2024 — May 2024 · PTPN IV Regional 3</div>
+        <div class="project-tags">
+          <span class="project-tag">System Design</span>
+          <span class="project-tag">Digital Monitoring</span>
+          <span class="project-tag">Agricultural Ops</span>
+        </div>
+      </div>
+
+      <!-- SITAKA -->
+      <div class="project-card fade-up">
+        <span class="project-chip">System</span>
+        <h3>SITAKA — Digital Library Management System</h3>
+        <p>Designed and built a digital library management system for SMAN 15 Pekanbaru to handle student visit records, book borrowing transactions, and inventory tracking in a structured and efficient manner.</p>
+        <div class="project-period">Sep 2023 — Dec 2023 · SMAN 15 Pekanbaru</div>
+        <div class="project-tags">
+          <span class="project-tag">System Analysis</span>
+          <span class="project-tag">Database</span>
+          <span class="project-tag">Web Dev</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item fade-up">
+        <div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Dec 2025 — Present</div>
+          <div class="timeline-company">Jakarta, Indonesia</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Data Annotator Intern</h3>
+          <div class="timeline-org">PT Digital Sawit Pro (SawitPRO)</div>
+          <ul>
+            <li>Annotated large-scale drone aerial imagery datasets using LabelMe to support computer vision model training for automated oil palm tree detection on Sawit Vision.</li>
+            <li>Developed and integrated geospatial analysis features including tree detection, planting distance measurement, stand density analysis, replanting candidate identification, and stand thinning analysis.</li>
+            <li>Trained machine learning models for tree detection from drone mapping imagery, directly enhancing Sawit Vision's core capabilities.</li>
+            <li>Built a functional Android prototype for Fresh Fruit Bunch (FFB) counting using Kotlin and XML, demonstrating end-to-end delivery from model training to application development.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item fade-up">
+        <div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-period">Mar 2024 — May 2024</div>
+          <div class="timeline-company">North Sumatra, Indonesia</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Technical and Processing Intern</h3>
+          <div class="timeline-org">PT Perkebunan Nusantara IV Regional 3</div>
+          <ul>
+            <li>Participated in designing a digital monitoring solution for heavy equipment to replace manual Excel-based tracking across multiple plantation and factory sites.</li>
+            <li>Supported daily operational reporting and document management within the Technical and Processing Division.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & CERTS -->
+<section id="education">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Education & Certifications</h2>
+    </div>
+    <div class="edu-grid">
+
+      <div class="edu-card fade-up" style="grid-column: span 2; display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:start;">
+        <div class="edu-icon" style="width:48px;height:48px;">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div>
+          <h3>Informatics Engineering</h3>
+          <div class="edu-sub">Universitas Islam Negeri Sultan Syarif Kasim Riau</div>
+          <div class="edu-period">2021 — 2025</div>
+          <div class="edu-badge">GPA 3.46 / 4.00</div>
+        </div>
+      </div>
+
+      <div class="edu-card fade-up">
+        <div class="edu-icon">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>The Arcade by Google Cloud</h3>
+        <div class="edu-sub">Google Cloud Skills Boost — Data & Analytics track with hands-on labs and skill badge challenges covering data processing and cloud-based analytical tools.</div>
+        <div class="edu-period">2025</div>
+        <span class="edu-badge">Skill Badge Earned</span>
+      </div>
+
+      <div class="edu-card fade-up">
+        <div class="edu-icon">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Juara Google Cloud Platform (JuaraGCP)</h3>
+        <div class="edu-sub">Google Cloud Skills Boost — Hands-on labs across core GCP services including compute, storage, and data analytics.</div>
+        <div class="edu-period">2024</div>
+        <span class="edu-badge">Official Google Cloud Badge</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:8px;"><strong>Wan Sofiyah</strong> — AI Engineer & Geospatial Developer</p>
+  <p><a href="mailto:wansofiyah233@gmail.com">wansofiyah233@gmail.com</a> &nbsp;·&nbsp; <a href="https://linkedin.com/in/wan-sofiyah">LinkedIn</a> &nbsp;·&nbsp; +62 896 3950 0789</p>
+  <p style="margin-top:16px; font-size:11px;">© 2026 Wan Sofiyah</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
